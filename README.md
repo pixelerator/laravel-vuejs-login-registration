@@ -1,66 +1,275 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Laravel 11 + Vue.js 3 Project
 
-## About Laravel
+This repository contains a web application built using Laravel 11 on the backend and Vue.js 3 on the frontend. The project also uses Laravel Sanctum for authentication and Vue Router for handling the frontend routing.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Table of Contents
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Running the Application](#running-the-application)
+- [API Endpoints](#api-endpoints)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [License](#license)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Laravel 11 Backend** with Sanctum for authentication
+- **Vue.js 3 Frontend** with Vue Router for client-side routing
+- User registration and login functionality
+- Secure authentication using **Laravel Sanctum**
+- Fetch and display user data
+- RESTful API to manage users
+- Use of `.env` variables for API Base URL in Vue.js
 
-## Learning Laravel
+## Technologies Used
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Backend:** Laravel 11, PHP 8.x
+- **Frontend:** Vue.js 3, Vite, Pinia for state management
+- **Authentication:** Laravel Sanctum
+- **Database:** MySQL (or any database supported by Laravel)
+- **HTTP Client:** Axios
+- **CSS Framework:** Tailwind CSS (Optional, based on your preferences)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Installation
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Prerequisites
 
-## Laravel Sponsors
+Before you begin, ensure you have met the following requirements:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- PHP 8.x
+- Composer
+- Node.js with npm or yarn
+- MySQL or another database supported by Laravel
 
-### Premium Partners
+### Steps to Install
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/yourusername/your-repo-name.git
+   cd your-repo-name
+   ```
+
+2. **Install backend dependencies**
+
+   Run the following command to install Laravel and other PHP dependencies:
+
+   ```bash
+   composer install
+   ```
+
+3. **Install frontend dependencies**
+
+   Run the following command to install Vue.js and other JavaScript dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. **Set up environment variables**
+
+   Create a `.env` file in the root of your project by copying the example `.env.example`:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   Configure your `.env` file with the correct database and Sanctum settings for the backend:
+
+   ```bash
+   APP_NAME=LaravelVueApp
+   APP_URL=http://localhost:8000
+
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=your_db_name
+   DB_USERNAME=your_db_username
+   DB_PASSWORD=your_db_password
+
+   SANCTUM_STATEFUL_DOMAINS=localhost:8000
+   SESSION_DOMAIN=localhost
+   ```
+
+   In the frontend `.env` file (located in the root directory of your Vue.js project), define the base API URL for Axios:
+
+   ```env
+   VITE_API_BASE_URL=http://localhost:8000/api
+   ```
+
+5. **Generate application key**
+
+   ```bash
+   php artisan key:generate
+   ```
+
+6. **Run migrations**
+
+   Set up the database tables by running the migrations:
+
+   ```bash
+   php artisan migrate
+   ```
+
+7. **Run the Laravel backend**
+
+   Start the Laravel development server:
+
+   ```bash
+   php artisan serve
+   ```
+
+8. **Run the Vue.js frontend**
+
+   Start the Vite development server:
+
+   ```bash
+   npm run dev
+   ```
+
+## Configuration
+
+### Sanctum Setup
+
+Laravel Sanctum is used for authentication. Make sure to configure the `SANCTUM_STATEFUL_DOMAINS` and `SESSION_DOMAIN` in the `.env` file properly, as shown in the previous step.
+
+### API Authentication
+
+Sanctum requires you to be logged in to access protected routes. Ensure you set the `Authorization` headers correctly in your frontend HTTP requests using Axios.
+
+### Axios Setup with .env
+
+In your Vue.js project, you can use the API base URL stored in the `.env` file. Add this in the `.env` file for Vue.js:
+
+```env
+VITE_API_BASE_URL=http://localhost:8000/api
+```
+
+Then in your Vue.js components or Pinia stores, use this environment variable:
+
+```javascript
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+
+axios.defaults.baseURL = apiBaseUrl;
+axios.defaults.withCredentials = true;
+```
+
+## Running the Application
+
+1. Start the backend server:
+
+   ```bash
+   php artisan serve
+   ```
+
+2. Run the frontend Vue.js app:
+
+   ```bash
+   npm run dev
+   ```
+
+3. Visit the frontend at:
+
+   ```
+   http://localhost:3000
+   ```
+
+4. API endpoints are served from:
+
+   ```
+   http://localhost:8000/api
+   ```
+
+## API Endpoints
+
+- **Login User:** `POST /api/users/login`
+- **Register User:** `POST /api/users/add`
+- **Get User Info:** `GET /api/users/me`
+- **Fetch Users (Paginated):** `GET /api/users?page={page}&limit={limit}`
+- **Update User:** `PUT /api/users/{id}`
+- **Delete User:** `DELETE /api/users/{id}`
+
+### Example User Controller
+
+```php
+<?php 
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
+class UserController extends Controller
+{
+    public function login(Request $request) {
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            $token = $user->createToken('authToken')->plainTextToken;
+            return response()->json([
+                'user' => $user,
+                'token' => $token,
+            ]);
+        } else {
+            return response()->json(['message' => 'Invalid login details'], 401);
+        }
+    }
+
+    public function store(Request $request) {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
+        ]);
+
+        $user = User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
+        ]);
+
+        return response()->json($user);
+    }
+}
+```
+
+## Project Structure
+
+```
+├── app/
+├── database/
+├── public/
+├── resources/
+│   ├── js/
+│   │   ├── pages/
+│   │   │   ├── Home.vue
+│   │   │   ├── Register.vue
+│   │   │   └── Login.vue
+│   │   └── router/
+│   │       └── index.js
+├── routes/
+├── storage/
+├── tests/
+├── .env
+├── package.json
+├── composer.json
+└── README.md
+```
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Feel free to fork this repository and contribute by submitting pull requests.
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature/your-feature-name`)
+3. Commit your changes (`git commit -m 'Add some feature'`)
+4. Push to the branch (`git push origin feature/your-feature-name`)
+5. Open a Pull Request
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
