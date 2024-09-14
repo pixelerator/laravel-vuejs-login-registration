@@ -2,8 +2,7 @@ import { defineStore } from 'pinia';
 import axios from 'axios';
 
 // Fetch the base API URL from the environment variable
-const apiBaseUrl = "https://vuejsreg.in/api";
-
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;  
 export const useUserStore = defineStore('userStore', {
   state: () => {
     return {
