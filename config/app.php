@@ -119,8 +119,11 @@ return [
     */
 
     'maintenance' => [
-        'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
+        'driver' => env('APP_MAINTENANCE_DRIVER', 'cache'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
+//     'providers' => [
+//     Laravel\Sanctum\SanctumServiceProvider::class,  // Add this if it's missing
+// ]
 
 ];
